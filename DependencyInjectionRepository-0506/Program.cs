@@ -4,9 +4,17 @@
     {
         static void Main(string[] args)
         {
-            IStudentRepository repo = new StudentJsonRepository(@"Data/students.json");
+            // IStudentRepository repo = new StudentJsonRepository(@"Data/students.json");
 
-            var list = repo.GetAll();
+            IStudentRepository repoXml = new StudentXmlRepository(@"Data/students.xml");
+
+            var list = repoXml.GetAll();
+
+            foreach (var item in list) {
+                Console.WriteLine($"{item.Id} - {item.Name}");
+            }
+
+            // repoXml.Save(list.ToList());
         }
     }
 }
