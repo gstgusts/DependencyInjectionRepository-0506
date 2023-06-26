@@ -1,3 +1,12 @@
-{
-
-}
+[
+  {
+    "Id": 1,
+    "Name": "Gusts",
+    "Surname": "Linkevich"
+  },
+  {
+    "Id": 2,
+    "Name": "Jhon",
+    "Surname": "Abdula"
+  }
+]

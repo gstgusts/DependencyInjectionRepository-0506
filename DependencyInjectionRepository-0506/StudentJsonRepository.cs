@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,16 @@ namespace DependencyInjectionRepository_0506
 
         public IEnumerable<Student> GetAll()
         {
-            throw new NotImplementedException();
+            var json = File.ReadAllText(_filePath);
+
+            var result = JsonConvert.DeserializeObject<List<Student>>(json);
+
+            if(result != null)
+            {
+                return result;
+            }
+
+            return Enumerable.Empty<Student>();
         }
 
         public void Save(Student student)
@@ -27,7 +37,9 @@ namespace DependencyInjectionRepository_0506
 
         public void Save(List<Student> students)
         {
-            var json = new List<Student>();
+            var json = JsonConvert.SerializeObject(students, Formatting.Indented);
+
+            File.WriteAllText(_filePath, json);
         }
     }
 }
